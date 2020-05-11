@@ -84,9 +84,10 @@ public class PlayerController : MonoBehaviour
     }
     private void Flip()
     {
-        //isFacingRight = !isFacingRight;
+        isFacingRight = !isFacingRight;
         //Vector3 scale = transform.localScale;
-       // scale.x = isFacingRight ? 1 : -1;
-       // transform.localScale = scale;
+        //scale.x = isFacingRight ? 1 : -1;
+        //transform.localScale = scale;
+        transform.Rotate(0f, 180f, 0f);
     }
 }
