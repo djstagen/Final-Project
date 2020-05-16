@@ -2,14 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Die : MonoBehaviour
+public class BreakOnContact : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void OnCollisionEnter2D(Collision2D collision)
     {
-        
         Destroy(gameObject);
     }
-
-
 }
