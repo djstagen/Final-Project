@@ -1,18 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Credits : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject uiObject;
+    public GameObject panel;
+
+    private void Start()
     {
-        
+        uiObject.SetActive(false);
+        panel.SetActive(false);
+    }
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        uiObject.SetActive(true);
+        panel.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnCollisionExit2D(Collision2D collision)
     {
-        
+        uiObject.SetActive(false);
+        panel.SetActive(false);
     }
 }
