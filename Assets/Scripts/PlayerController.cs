@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Movement speed in tiles per second (1 tile = 1 meter")]
     [SerializeField]
     private float speed;
+    //public AudioClip weaponAudio;
 
     [Header("Air Movement")]
     [Tooltip("The upward force applied when player jumps")]
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
     new private Collider2D collider;
     private RaycastHit2D[] hits = new RaycastHit2D[16];
     private float groundDistanceCheck = 0.05f;
+    private Animator animator;
    
     private float horizontalInput = 0;
     private bool isJumpPressed = false;
@@ -33,7 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         playerRigidbody = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
-        
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -41,6 +43,10 @@ public class PlayerController : MonoBehaviour
     {
         horizontalInput += Input.GetAxis("Horizontal");
         isJumpPressed = isJumpPressed || Input.GetButtonDown("Jump");
+       //if (Input.GetButtonDown("Fire1"))
+       //{
+       //    Instantiate(weaponAudio);
+       //}
     }
 
     private void ClearInputs()
@@ -75,10 +81,10 @@ public class PlayerController : MonoBehaviour
             playerRigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
 
-        // Update our animator system after updating the player's movement.
-        //animator.SetFloat("xSpeed", Mathf.Abs(playerRigidbody.velocity.x));
-       //animator.SetFloat("yVelocity", playerRigidbody.velocity.y);
-       // animator.SetBool("isOnGround", isOnGround);
+         //Update our animator system after updating the player's movement.
+         animator.SetFloat("xSpeed", Mathf.Abs(playerRigidbody.velocity.x));
+         animator.SetFloat("yVelocity", playerRigidbody.velocity.y);
+         animator.SetBool("isOnGround", isOnGround);
 
         ClearInputs();
     }

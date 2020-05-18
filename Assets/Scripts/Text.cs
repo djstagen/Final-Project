@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Credits : MonoBehaviour
+public class Text : MonoBehaviour
 {
     public GameObject uiObject;
     public GameObject panel;
